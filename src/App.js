@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -42,6 +43,7 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo Iniciando Projeto</h1>
         <Form value={ this.state } />
+        <Card value={ this.state } />
       </div>
     );
   }
