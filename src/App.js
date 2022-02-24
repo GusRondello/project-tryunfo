@@ -6,10 +6,6 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.handleButton = this.handleButton.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -26,35 +22,50 @@ class App extends React.Component {
     };
   }
 
-  handleButton() {
+  handleTextButton = () => {
     const values = ['cardName',
       'cardDescription',
-      'cardAttr1',
-      'cardAttr2',
-      'cardAttr3',
       'cardImage',
       'cardRare'];
-    const isTrue = values.every((nome) => {
-      const estados = this.state;
-      return estados[nome];
+    return values.every((nome) => {
+      const states = this.state;
+      return states[nome];
     });
-    this.setState({
-      isSaveButtonDisabled: !isTrue,
-    }, () => console.log(this.state.isSaveButtonDisabled));
   }
 
-  onInputChange({ target }) {
+  handleNumberButton = () => {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const attValues = [cardAttr1, cardAttr2, cardAttr3];
+    const numberArray = attValues.map((element) => Number(element));
+    const min = 0;
+    const max = 90;
+    const maxSum = 210;
+    const sumResult = numberArray.reduce((a, b) => a + b) <= maxSum;
+    const valuesMinMax = numberArray.every((element) => {
+      const isMin = element >= min;
+      const isMax = element <= max;
+      return (isMin && isMax);
+    });
+    return valuesMinMax && sumResult;
+  }
+
+  handleButton = () => {
+    const stateText = this.handleTextButton();
+    const attrValues = this.handleNumberButton();
+    this.setState({
+      isSaveButtonDisabled: !(attrValues && stateText),
+    });
+  }
+
+  onInputChange = ({ target }) => {
     const { name } = target;
-    console.log(name);
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     }, () => this.handleButton());
   }
 
-  onSaveButtonClick() {
-    console.log('sei la');
-  }
+  onSaveButtonClick = () => true
 
   render() {
     const { cardName,
