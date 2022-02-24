@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import CardList from './components/CardList';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardList: [],
       onInputChange: () => {},
       onSaveButtonClick: () => {},
     };
@@ -75,6 +77,25 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      cardList } = this.state;
+    const cardObj = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -83,6 +104,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardList: [...cardList, cardObj],
     }, () => this.handleTrunfo());
   }
 
@@ -96,7 +118,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      cardList } = this.state;
+    const { cardObject } = cardList;
     return (
       <div>
         <h1>Tryunfo Iniciando Projeto</h1>
@@ -125,6 +149,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
         />
+        <CardList cardList={ cardList } />
       </div>
     );
   }
