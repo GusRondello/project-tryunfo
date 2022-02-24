@@ -65,7 +65,17 @@ class App extends React.Component {
     }, () => this.handleButton());
   }
 
-  onSaveButtonClick = () => true
+  onSaveButtonClick = () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
+  }
 
   render() {
     const { cardName,
@@ -91,6 +101,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
