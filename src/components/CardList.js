@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Card from './Card';
+import Delete from './DeleteButton';
 
 class CardList extends Component {
   render() {
-    const { cardList } = this.props;
+    const { cardList, onButtonDelete } = this.props;
     return (
       <div className="cardList">
         {cardList.length > 0
@@ -22,6 +23,10 @@ class CardList extends Component {
                 cardRare={ element.cardRare }
                 cardTrunfo={ element.cardTrunfo }
               />
+              <Delete
+                onButtonDelete={ onButtonDelete }
+                buttonName={ element.cardName }
+              />
             </div>
 
           )) : <h2>Não a cartas no Baralho!</h2> }
@@ -32,6 +37,7 @@ class CardList extends Component {
 
 CardList.propTypes = {
   cardList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onButtonDelete: PropTypes.func.isRequired,
 };
 
 export default CardList;

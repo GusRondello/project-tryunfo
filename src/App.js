@@ -22,7 +22,20 @@ class App extends React.Component {
       cardList: [],
       onInputChange: () => {},
       onSaveButtonClick: () => {},
+      onButtonDelete: () => {},
     };
+  }
+
+  onButtonDelete = ({ target }) => {
+    const { cardList } = this.state;
+    const cartaDeletar = cardList.find((carta) => carta.cardName === target.name);
+    const isTrunfo = cardList.some((carta) => carta.cardTrunfo === true);
+    const cartasAficar = cardList.filter((carta) => carta !== cartaDeletar);
+    this.setState({
+      cardList: cartasAficar,
+      hasTrunfo: !isTrunfo,
+    });
+    console.log(`Deletado: ${target.name}`);
   }
 
   handleTrunfo = () => {
@@ -74,7 +87,7 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, () => this.handleButton());
+    }, this.handleButton);
   }
 
   onSaveButtonClick = () => {
@@ -152,7 +165,10 @@ class App extends React.Component {
           />
         </section>
         <section className="divCardList">
-          <CardList cardList={ cardList } />
+          <CardList
+            cardList={ cardList }
+            onButtonDelete={ this.onButtonDelete }
+          />
         </section>
       </div>
     );

@@ -14,8 +14,8 @@ class Card extends Component {
       cardTrunfo } = this.props;
     return (
       <div className="showCard">
+        <p>Nome:</p>
         <p data-testid="name-card" name="cardName">
-          Nome:
           {cardName}
         </p>
         <img
