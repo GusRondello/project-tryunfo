@@ -5,13 +5,16 @@ class Checbox extends Component {
   render() {
     const { cardTrunfo, onInputChange } = this.props;
     return (
-      <input
-        type="checkbox"
-        name="cardTrunfo"
-        data-testid="trunfo-input"
-        checked={ cardTrunfo }
-        onChange={ onInputChange }
-      />
+      <label htmlFor="trunfoCheck">
+        <input
+          id="trunfoCheck"
+          type="checkbox"
+          name="cardTrunfo"
+          data-testid="trunfo-input"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>
     );
   }
 }

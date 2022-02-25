@@ -12,10 +12,10 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo } = this.props;
-    console.log(cardName);
     return (
-      <div>
+      <div className="showCard">
         <p data-testid="name-card" name="cardName">
+          Nome:
           {cardName}
         </p>
         <img
@@ -25,18 +25,28 @@ class Card extends Component {
           name="cardImage"
         />
         <p data-testid="description-card" name="cardDescription">
+          Descrição:
+          {' '}
           {cardDescription}
         </p>
         <p data-testid="attr1-card" name="cardAttr1">
+          Atributo 1:
+          {' '}
           {cardAttr1}
         </p>
         <p data-testid="attr2-card" name="cardAttr2">
+          Atributo 2:
+          {' '}
           {cardAttr2}
         </p>
         <p data-testid="attr3-card" name="cardAttr3">
+          Atributo 3:
+          {' '}
           {cardAttr3}
         </p>
         <p data-testid="rare-card" name="cardRare">
+          Raridade:
+          {' '}
           {cardRare}
         </p>
         <p>{cardTrunfo && <SuperTrunfo />}</p>

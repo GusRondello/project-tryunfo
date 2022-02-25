@@ -11,3 +11,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.tittle {
+  display: flex;
+  justify-content: center;
+  background-color: #023031;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+}
+.createCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5%;
+}
+.divCardList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 5%;
+}
+.formCard {
+  width: 398px;
+  height: 620px;
+  right: 57%;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAFAFA;
+}
+
+.showCard {
+  width: 398px;
+  height: 620px;
+  left: 57%;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  border: #023031 solid;
+  color: red;
+  border-radius: 2%;
+  margin:10px;
+  align-items: flex-end;
+}
+
+.cardList {
+  width: 100%;
+  height: 500px;
+  left: 57%;
+  top: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FAFAFA ;
+}
